@@ -86,9 +86,11 @@ install_nezha_agent() {
     mkdir -p "$NEZHA_TMP_DIR"
 
     NEZHA_AGENT_NAME="$NEZHA_TMP_DIR/nezha-agent_${platform}_${arch}.zip"
+    echo "正在下载..."
     curl -sL "$AGENT_URL" -o "$NEZHA_AGENT_NAME"
+    echo "正在解压..."
     unzip "$NEZHA_AGENT_NAME" -d "$NEZHA_AGENT_DIR"
-
+    
     chmod +x "$NEZHA_AGENT_EXECUTABLE"
 
     main_version=$(echo "$NEZHA_AGENT_VERSION" | cut -d '.' -f1 | sed 's/^v//')
